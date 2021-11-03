@@ -1,4 +1,4 @@
-class LogsController < ApplicationController
+class CommentsController < ApplicationController
   def index
   end
 
@@ -9,6 +9,9 @@ class LogsController < ApplicationController
   end
 
   def create
+  end
+
+  def edit
   end
 
   def destroy
