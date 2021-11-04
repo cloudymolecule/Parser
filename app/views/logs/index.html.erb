@@ -1,2 +1,21 @@
-<h1>Logs#index</h1>
-<p>Find me in app/views/logs/index.html.erb</p>
+<h2>SAVED LOGS</h2>
+<div class='logs'>
+    <% @logs.each do |log| %>
+        <div id="log-<%= log.id %>">
+        <h3>LOG NUMBER: <%= log.id %></h3>
+        <h4> SOURCE IP </h4>
+        <p><%= log.source_ip %></p>
+        <h4> DESTINATION IP </h4>
+        <p><%= log.dest_ip %></p>
+        <h4> IS SOURCE IP PRIVATE? </h4>
+        <p><%= log.source_ip_private %></p>
+        <h4> IS DESTINATION IP PRIVATE? </h4>
+        <p><%= log.dest_ip_private %></p>
+        <h4> IS SOURCE IP VALID? </h4>
+        <p><%= log.source_ip_valid %></p>
+        <h4> IS DESTINATION IP VALID? </h4>
+        <p><%= log.dest_ip_valid %></p>
+        </div>
+    <% end %>
+</div>
+

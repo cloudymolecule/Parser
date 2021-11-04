@@ -1,13 +1,14 @@
 class LogsController < ApplicationController
   def index
+    @logs = Log.all
   end
 
   def show
   end
 
-  def create #here
+  def create 
     data = parse_text(log_params)
-    byebug
+    @new_log = Log.create(data)
   end
 
   def destroy

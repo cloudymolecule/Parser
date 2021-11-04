@@ -10,42 +10,43 @@ class ApplicationController < ActionController::Base
             ip_valid = 0
             arr = ip.split('.')
             arr.each do |n|
-                id n <= 255 && n >= 0
-                ip_valid ++
+                if n.to_i <= 255 && n.to_i >= 0
+                    ip_valid = ip_valid +1 
+                end
             end
 
-            ip_valid == 4 ? return true : return false
+            ip_valid == 4 ? true : false
         end
         
         logArr = string.split(' ')
         
-        source = '' #done
-        dest = '' #done
-        source_priv = false #done
-        dest_priv = false
-        source_valid = false #done
-        dest_valid = false #done
+        source_ip = ''
+        dest_ip = ''
+        source_ip_private = false
+        dest_ip_private = false
+        source_ip_valid = false
+        dest_ip_valid = false
 
         logArr.each do |s|
-            if s.match('dst') #destination
-                dest = s[4..-1]
-                dest_valid = check_ip(dest)
+            if s.match('dst') 
+                dest_ip = s[4..-1]
+                dest_ip_valid = check_ip(dest_ip)
             end
-            if s.match('sourceTranslatedAddress') #source
-                source = s[24..-1]
-                source_valid = check_ip(source)
+            if s.match('sourceTranslatedAddress') 
+                source_ip = s[24..-1]
+                source_ip_valid = check_ip(source_ip)
             end
-            if s.match('dhost=DTM-AdluminMBP') #source private
-                source_priv = true
+            if s.match('dhost=DTM-AdluminMBP') 
+                source_ip_private = true
             end
-            if s.match('') 
-                source = s[24..-1]
+            if s.match('cs1=WCU-External-Inbound')
+                dest_ip_private = true
             end
            
             
         end
 
-        return [source, dest]
+        return {source_ip: source_ip, dest_ip: dest_ip, source_ip_private: source_ip_private, dest_ip_private: dest_ip_private, source_ip_valid: source_ip_valid, dest_ip_valid: dest_ip_valid}
     end
 end
 
