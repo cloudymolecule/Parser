@@ -1,0 +1,9 @@
+<h1>LOG PARSER</h1>
+
+<%= form_for :log, url: logs_path do |form| %>
+    <%= form.label :log, 'Please paste your log here:' %>
+    </br>
+    <%= text_area_tag :log, nil, rows: 15, cols: 80 %>
+    <%= form.submit "Submit" %>
+<% end %>
+

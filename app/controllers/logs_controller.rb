@@ -5,12 +5,17 @@ class LogsController < ApplicationController
   def show
   end
 
-  def new
-  end
-
-  def create
+  def create #here
+    data = parse_text(log_params)
+    byebug
   end
 
   def destroy
+  end
+
+  private
+
+  def log_params
+    params.require(:log)
   end
 end
