@@ -1,3 +1,3 @@
 class Comment < ApplicationRecord
-    belongs_to :Log
+    belongs_to :Log, optional: true
 end

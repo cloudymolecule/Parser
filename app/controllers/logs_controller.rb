@@ -3,15 +3,16 @@ class LogsController < ApplicationController
     @logs = Log.all
   end
 
-  def show
-  end
-
   def create 
     data = parse_text(log_params)
     @new_log = Log.create(data)
+    redirect_to home_path
   end
 
   def destroy
+    log = Log.find(params[:id])
+    log.destroy
+    redirect_to logs_path
   end
 
   private

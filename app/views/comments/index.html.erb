@@ -1,2 +1,9 @@
-<h1>Comments#index</h1>
-<p>Find me in app/views/comments/index.html.erb</p>
+<h2> ALL COMMENTS FOR LOG NUMBER <%= @log.id %></h2>
+
+<% @comments.each do |comment| %>
+    <h3>-----------------------------------------------</h3>
+    <h3><%= comment.text %></h3>
+    <%= link_to "Edit Comment", edit_comment_path(comment ) %> ||
+    <%= link_to "Delete Comment", comment_path(comment), method: 'DELETE' %>
+    <h3>-----------------------------------------------</h3>
+<% end %>

@@ -2,20 +2,26 @@
 <div class='logs'>
     <% @logs.each do |log| %>
         <div id="log-<%= log.id %>">
-        <h3>LOG NUMBER: <%= log.id %></h3>
-        <h4> SOURCE IP </h4>
-        <p><%= log.source_ip %></p>
-        <h4> DESTINATION IP </h4>
-        <p><%= log.dest_ip %></p>
-        <h4> IS SOURCE IP PRIVATE? </h4>
-        <p><%= log.source_ip_private %></p>
-        <h4> IS DESTINATION IP PRIVATE? </h4>
-        <p><%= log.dest_ip_private %></p>
-        <h4> IS SOURCE IP VALID? </h4>
-        <p><%= log.source_ip_valid %></p>
-        <h4> IS DESTINATION IP VALID? </h4>
-        <p><%= log.dest_ip_valid %></p>
+            <h3>-----------------------------------------------</h3>
+            <h3>LOG NUMBER: <%= log.id %></h3>
+
+            <%= link_to "Add Comment", new_comment_path(comment: {log_id: log.id}) %> ||
+            <%= link_to "All Comments", comments_path(:comment => {log_id: log.id} )%> ||
+            <%= link_to "Delete Log", log_path(id: log.id), method: 'DELETE' %>
+
+            <h4> SOURCE IP </h4>
+            <p><%= log.source_ip %></p>
+            <h4> DESTINATION IP </h4>
+            <p><%= log.dest_ip %></p>
+            <h4> IS SOURCE IP PRIVATE? </h4>
+            <p><%= log.source_ip_private %></p>
+            <h4> IS DESTINATION IP PRIVATE? </h4>
+            <p><%= log.dest_ip_private %></p>
+            <h4> IS SOURCE IP VALID? </h4>
+            <p><%= log.source_ip_valid %></p>
+            <h4> IS DESTINATION IP VALID? </h4>
+            <p><%= log.dest_ip_valid %></p>
+            <h3>-----------------------------------------------</h3>
         </div>
     <% end %>
 </div>
-
